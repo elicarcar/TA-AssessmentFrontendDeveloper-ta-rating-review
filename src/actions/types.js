@@ -1,0 +1,2 @@
+export const GET_MOVIES = "GET_MOVIES";
+export const MOVIE_FETCH_FAILED = "MOVIE_FETCH_FAILED";
