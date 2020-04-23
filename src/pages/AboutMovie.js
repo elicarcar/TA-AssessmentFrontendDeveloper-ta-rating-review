@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getMovie } from "../actions/movie";
 import PropTypes from "prop-types";
 import MovieDetails from "../components/movie/MovieDetails";
+import RatesAndReview from "../components/rates-review";
+import { FaCircleNotch } from "react-icons/fa";
 
 const AboutMovie = ({ match, movie: { movie, isLoading }, getMovie }) => {
   const getSingleMovie = "https://api.themoviedb.org/3/movie";
@@ -12,10 +14,11 @@ const AboutMovie = ({ match, movie: { movie, isLoading }, getMovie }) => {
 
   console.log(movie);
   return isLoading || movie === null ? (
-    <p>Loading</p>
+    <FaCircleNotch />
   ) : (
     <Fragment>
       <MovieDetails movie={movie} />
+      <RatesAndReview />
     </Fragment>
   );
 };
