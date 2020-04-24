@@ -1,15 +1,15 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import PropTypes from "prop-types";
 
-const StarRate = ({ handleScore }) => {
+const StarRate = ({ handleScore, score }) => {
   return (
     <div>
+      <label>Your Score:</label>
       {[...Array(10)].map((star, i) => {
         const scoreVal = i + 1;
         return (
           <label>
-            <FaStar />
+            <FaStar color={scoreVal <= score ? "yellow" : "white"} />
             <input
               type="radio"
               name="score"
@@ -23,7 +23,5 @@ const StarRate = ({ handleScore }) => {
     </div>
   );
 };
-
-StarRate.propTypes = {};
 
 export default StarRate;

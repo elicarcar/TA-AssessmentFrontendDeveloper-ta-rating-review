@@ -16,7 +16,7 @@ const MovieDetails = ({ movie }) => {
       >
         <div className="inner-bg-style">
           <img src={poster_path + movie.poster_path} />
-          <div>
+          <div className="info-style-flex">
             <h3>{movie.title}</h3>
             <p>
               <strong>Overview:</strong> {movie.overview}
@@ -34,6 +34,8 @@ const MovieDetails = ({ movie }) => {
   );
 };
 
-MovieDetails.propTypes = {};
+MovieDetails.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
 
 export default MovieDetails;

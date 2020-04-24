@@ -1,4 +1,9 @@
-import { GET_MOVIES, MOVIE_FETCH_FAILED, GET_MOVIE } from "../actions/types";
+import {
+  GET_MOVIES,
+  MOVIE_FETCH_FAILED,
+  GET_MOVIE,
+  GET_MOVIE_SEARCH,
+} from "../actions/types";
 
 const initialState = {
   movies: [],
@@ -12,6 +17,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case GET_MOVIES:
+    case GET_MOVIE_SEARCH:
       return { ...state, movies: payload, isLoading: false };
     case GET_MOVIE:
       return { ...state, movie: payload, isLoading: false };

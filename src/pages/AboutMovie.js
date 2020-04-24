@@ -4,21 +4,21 @@ import { getMovie } from "../actions/movie";
 import PropTypes from "prop-types";
 import MovieDetails from "../components/movie/MovieDetails";
 import RatesAndReview from "../components/rates-review";
-import { FaCircleNotch } from "react-icons/fa";
+import Spinner from "../layouts/spinner/Spinner";
 
 const AboutMovie = ({ match, movie: { movie, isLoading }, getMovie }) => {
   const getSingleMovie = "https://api.themoviedb.org/3/movie";
+  const movieId = match.params.id;
   useEffect(() => {
     getMovie(getSingleMovie, match.params.id);
   }, []);
 
-  console.log(movie);
   return isLoading || movie === null ? (
-    <FaCircleNotch />
+    <Spinner />
   ) : (
     <Fragment>
       <MovieDetails movie={movie} />
-      <RatesAndReview />
+      <RatesAndReview id={movieId} />
     </Fragment>
   );
 };

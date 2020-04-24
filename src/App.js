@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import AboutMovie from "./pages/AboutMovie";
 import store from "./store";
 import "./App.less";
+import Footer from "./layouts/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" exact component={Homepage} />
           <Route path="/movie/:id" exact component={AboutMovie} />
         </Switch>
+        <Footer />
       </Router>
     </Provider>
   );

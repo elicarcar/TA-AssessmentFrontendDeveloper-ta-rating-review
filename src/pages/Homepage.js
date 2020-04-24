@@ -1,29 +1,56 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState, useCallback } from "react";
 import { connect } from "react-redux";
-import { getMovies, getMovie } from "../actions/movie";
+import { getMovies, getMovie, getMovieSearch } from "../actions/movie";
 import MovieItem from "../components/movie/MovieItem";
+import SearchInput from "../components/movie/SearchInput";
+import Spinner from "../layouts/spinner/Spinner";
 import PropTypes from "prop-types";
-import { FaCircleNotch } from "react-icons/fa";
 
-const Homepage = ({ getMovies, movie: { movies, isLoading } }) => {
-  console.log(movies);
-
+const Homepage = ({
+  getMovies,
+  getMovieSearch,
+  movie: { movies, isLoading },
+}) => {
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     getMovies("https://api.themoviedb.org/3/movie/now_playing");
   }, [getMovies]);
 
-  return !isLoading && movies.results !== undefined ? (
+  const handleSearchClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      getMovieSearch(searchValue);
+    },
+    [searchValue]
+  );
+
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value);
+    handleSearchClick(e);
+  };
+
+  console.log(searchValue);
+
+  return (
     <Fragment>
-      <h2>Popular now!</h2>
-      <div className="item-layout">
-        {movies.results.map((movie) => (
-          <MovieItem key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </Fragment>
-  ) : (
-    <Fragment>
-      <FaCircleNotch />
+      <SearchInput
+        handleSearchChange={(e) => handleSearchChange(e)}
+        handleSearchClick={(e) => handleSearchClick(e)}
+        searchValue={searchValue}
+      />
+      {!isLoading && movies.results !== undefined ? (
+        <Fragment>
+          <div className="item-layout">
+            {movies.results.map((movie) => (
+              <MovieItem key={movie.id} movie={movie} />
+            ))}
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <Spinner />
+        </Fragment>
+      )}
     </Fragment>
   );
 };
@@ -32,6 +59,11 @@ const mapStateToProps = (state) => ({
   movie: state.movie,
 });
 
-Homepage.propTypes = {};
+Homepage.propTypes = {
+  getMovies: PropTypes.func.isRequired,
+  movie: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps, { getMovies })(Homepage);
+export default connect(mapStateToProps, { getMovies, getMovieSearch })(
+  Homepage
+);

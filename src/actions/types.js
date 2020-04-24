@@ -1,3 +1,8 @@
 export const GET_MOVIES = "GET_MOVIES";
 export const GET_MOVIE = "GET_MOVIE";
+export const GET_MOVIE_SEARCH = "GET_MOVIE_SEARCH";
 export const MOVIE_FETCH_FAILED = "MOVIE_FETCH_FAILED";
+
+export const ADD_REVIEW = "ADD_REVIEW";
+export const GET_REVIEWS = "GET_REVIEWS";
+export const REVIEWS_FETCH_FAILED = "REVIEWS_FETCH_FAILED";
