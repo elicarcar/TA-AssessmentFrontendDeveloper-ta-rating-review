@@ -27,6 +27,18 @@ const MovieDetails = ({ movie }) => {
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </ul>
+            <ul>
+              <h6>Languages</h6>
+              {movie.spoken_languages.map((lang, i) => (
+                <li key={i}>{lang.name}</li>
+              ))}
+            </ul>
+            <div>
+              <h6>Duration: {movie.runtime} min</h6>
+              <br />
+              <p>Voted Count: {movie.vote_count}</p>
+              <p>Average vote: {movie.vote_average}</p>
+            </div>
           </div>
         </div>
       </div>

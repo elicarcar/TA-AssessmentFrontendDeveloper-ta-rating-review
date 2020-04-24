@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { FaStar } from "react-icons/fa";
 import Moment from "react-moment";
 
@@ -22,7 +21,5 @@ const ReviewList = ({ review }) => {
     </div>
   );
 };
-
-ReviewList.propTypes = {};
 
 export default ReviewList;
