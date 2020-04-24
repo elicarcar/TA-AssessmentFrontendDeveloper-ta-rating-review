@@ -29,8 +29,6 @@ const Homepage = ({
     handleSearchClick(e);
   };
 
-  console.log(searchValue);
-
   return (
     <Fragment>
       <SearchInput
