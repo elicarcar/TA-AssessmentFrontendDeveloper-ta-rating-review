@@ -22,7 +22,7 @@ const RatesAndReview = ({ addReview, id, review: { reviews } }) => {
   const { author, review, score } = reviewForm;
 
   const matchedReviews = reviews.filter((review) => review.movieId === id);
-  const averageScore = calculateScore(matchedReviews);
+  const averageScore = calculateScore(matchedReviews) || 0;
 
   useEffect(() => {
     getReviews();
