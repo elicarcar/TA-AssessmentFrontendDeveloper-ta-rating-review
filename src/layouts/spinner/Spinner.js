@@ -1,10 +1,10 @@
-import React from "react";
-import { faCircleNotch } from "react-icons";
+import React from 'react'
+import { FaCircleNotch } from 'react-icons/fa'
 
 const Spinner = () => (
-  <div class="container">
-    <faCircleNotch color="white" />
+  <div className="container">
+    <FaCircleNotch color="white" />
   </div>
-);
+)
 
-export default Spinner;
+export default Spinner
